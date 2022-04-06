@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: logging3
+Version: 0.0.2
+Summary: Useful logging enhancement
+Home-page: https://github.com/pmayer/logging3
+Author: Philipp Mayer
+Author-email: dev@paradoxon.at
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# logging3
+
+## Installation
+
+`logging3` is available through PyPI, and thus can be installed via pip:
+
+```
+pip install logging3
+```
+
+## Quickstart
+
+Just import the handler from `logging3`:
+
+```
+from logging3 import TimedCompressedRotatingFileHandler
+```
+
+
