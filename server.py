@@ -39,12 +39,18 @@ def post_talk_form():
     print(url)
     cast.wait()
     mc.play_media(url, 'audio/mp3')
+    # Shut down discovery
+    pychromecast.discovery.stop_discovery(browser)
+
     return get_talk_form()
 
 def generate_talk(text_form, lang='ja'):
     # text_token = hashlib.sha256((lang + text).encode()).hexdigest()
     text_token = 'test.mp3'
     talk_path = TALK_DIR / text_token
+    if os.path.exists(talk_path):
+        os.remove(talk_path)
+
     print(text_form + ',' + lang)
     tts = gTTS(text=str(text_form), lang=lang)
     # tts = gTTS(text='こんにちは', lang='ja')
@@ -54,6 +60,6 @@ def generate_talk(text_form, lang='ja'):
 if __name__ == '__main__':
     if not TALK_DIR.exists():
         TALK_DIR.mkdir()
-    app.host = os.environ.get('SERVER_HOST', '192.168.11.7')
+    app.host = os.environ.get('SERVER_HOST', '192.168.1.17')
     app.port = os.environ.get('SERVER_PORT', '8080')
     app.run(host=app.host, port=app.port, reloader=True)
